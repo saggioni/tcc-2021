@@ -1,0 +1,46 @@
+<app-login *ngIf="authState !== 'signedin'" (authStateChangeEvent)="changeState($event)" (userChangeEvent)="changeUser($event)"></app-login>
+
+<div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar" *ngIf="authState === 'signedin'">
+  <div class="c-sidebar-brand d-lg-down-none">
+    <svg class="c-sidebar-brand-full" width="118" height="46">
+      <use xlink:href="assets/brand/coreui.svg#full"></use>
+    </svg>
+    <svg class="c-sidebar-brand-minimized" width="46" height="46">
+      <use xlink:href="assets/brand/coreui.svg#signet"></use>
+    </svg>    
+  </div>
+  <ul class="c-sidebar-nav">    
+    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="index.html">
+        Dashboard<span class="badge badge-info">NEW</span></a></li>    
+    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="colors.html">
+       Colors</a></li>
+    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="typography.html">
+        Typography</a></li>   
+  </ul>
+</div>
+
+<div class="c-wrapper c-fixed-components" style="width: 100%;" *ngIf="authState === 'signedin'">
+  <header class="c-header c-header-light c-header-fixed" >
+    <div class="c-subheader px-3">
+      <button type="button" class="btn" style="width: 25px; height: 40px;"><span class="cil-menu btn-icon mr-3"></span></button>        
+      <!-- Breadcrumb-->
+      <ol class="breadcrumb border-0 m-0">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item"><a href="#">Admin</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+        <!-- Breadcrumb Menu-->
+      </ol>
+      <app-logout (authStateChangeEvent)="changeState($event)" (userChangeEvent)="changeUser($event)"></app-logout>
+    </div>    
+  </header>
+  <div class="c-body">
+    <main class="c-main" style="padding: 10px;">
+      <div class="container-fluid" style="padding: 3px;"> 
+        <div class="fade-in">
+          <app-home></app-home>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

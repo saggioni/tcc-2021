@@ -1,0 +1,47 @@
+<div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="showMessage">
+  {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hideAllert()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<main class="c-main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card-group">
+            <div class="card p-4">
+              <div class="card-body">
+                <h1>Login</h1><p class="text-muted">Digite seu usuário e senha</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" #login placeholder="Username" autocomplete="username" required="" class="form-control">
+                  </div>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="password" #password placeholder="Password" autocomplete="current-password" required="" class="form-control">
+                  </div>                
+                  <div class="row">
+                    <div class="col-12">
+                      <button type="button" class="btn btn-primary px-4" (click)="signIn(login.value, password.value)">Entrar</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="card text-white bg-primary py-5 d-md-down-none" style="width: 44%;">
+              <div class="card-body text-center">
+                <div>
+                  <h2>Não tem cadastro</h2>
+                  <p>Solicite o seu cadastro para o administrador do sistema, clique no botão abaixo.</p>
+                  <button type="button" class="btn btn-primary active mt-3">Solicitar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
