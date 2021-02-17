@@ -17,6 +17,9 @@ phases:
       - npm install
   build:
     commands:
+      - pwd
+      - cd ./code/frontend/angular-app/
+      - pwd
       # - echo testing...
       # - echo building...
       - ng build --prod
@@ -24,4 +27,4 @@ artifacts:
   files:
     - "**/*"
   discard-paths: no
-  base-directory: dist/your-app-name
+  base-directory: dist/angular-app
