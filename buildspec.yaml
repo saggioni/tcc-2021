@@ -17,7 +17,7 @@ phases:
       - npm install
   build:
     commands:
-      - pwd
+      - ls
       - cd ./code/frontend/angular-app/
       - pwd
       # - echo testing...
