@@ -18,7 +18,11 @@ phases:
   build:
     commands:
       - ls
-      - cd ./code/frontend/angular-app/
+      - cd code
+      - ls
+      - cd frontend
+      - ls      
+      - cd angular-app
       - pwd
       # - echo testing...
       # - echo building...
