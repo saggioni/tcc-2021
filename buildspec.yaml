@@ -17,15 +17,12 @@ phases:
       - npm install
   build:
     commands:
-      - ls
-      - cd code
-      - ls
-      - cd frontend
+      - ls /
       - ls      
-      - cd angular-app
       - pwd
       # - echo testing...
       # - echo building...
+      - pushd code/frontend/angular-app && ng build && popd
       - ng build --prod
 artifacts:
   files:
