@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Auth } from '@aws-amplify/auth';
+import { Auth, API } from '@aws-amplify/auth';
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 
 @Component({
@@ -33,6 +33,34 @@ export class LogoutComponent implements OnInit {
     } catch (error) {
         console.log('error signing out: ', error);
     }
+  }
+
+  async testApi() {
+    const apiName = 'BackendApi';
+    const path = '/prod/incidentes'; 
+    const myInit = { // OPTIONAL
+        headers: {}, // OPTIONAL
+        response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+    };
+    
+    API
+      .get(apiName, path, myInit)
+      .then((response: any) => {
+        console.log(response);
+      })
+      .catch((error: { response: any; }) => {
+        console.log(error.response);
+     });    
+  }
+
+  getData() { 
+    const apiName = 'MyApiName';
+    const path = '/path';
+    const myInit = { // OPTIONAL
+      headers: {}, // OPTIONAL
+    };
+  
+    return API.get(apiName, path, myInit);
   }
 
 }

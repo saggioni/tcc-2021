@@ -13,6 +13,14 @@ Amplify.configure({
     userPoolId: 'sa-east-1_dpP907tV7',
     userPoolWebClientId: '5idv4v922blpsj4cgdcrsq6qh',
     authenticationFlowType: 'USER_PASSWORD_AUTH',
+  },
+  API: {
+    endpoints: [
+        {
+            name: "BackendApi",
+            endpoint: "https://4ql3a62j23.execute-api.sa-east-1.amazonaws.com/Prod"
+        }
+    ]
   }
 });
 const currentConfig = Auth.configure();
