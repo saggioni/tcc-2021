@@ -37,7 +37,7 @@ export class LogoutComponent implements OnInit {
 
   async testApi() {
     const apiName = 'BackendApi';
-    const path = '/prod/incidentes'; 
+    const path = '/incidentes'; 
     const myInit = { // OPTIONAL
         headers: {}, // OPTIONAL
         response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
@@ -52,15 +52,4 @@ export class LogoutComponent implements OnInit {
         console.log(error.response);
      });    
   }
-
-  getData() { 
-    const apiName = 'MyApiName';
-    const path = '/path';
-    const myInit = { // OPTIONAL
-      headers: {}, // OPTIONAL
-    };
-  
-    return API.get(apiName, path, myInit);
-  }
-
 }
