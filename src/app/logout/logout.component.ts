@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Auth, API } from '@aws-amplify/auth';
+import Amplify, { API } from 'aws-amplify';
+import { Auth } from '@aws-amplify/auth';
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 
 @Component({
