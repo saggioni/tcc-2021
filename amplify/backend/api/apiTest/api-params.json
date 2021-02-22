@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/test",
+            "lambdaFunction": "apiTest",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/test"
+        }
+    ],
+    "resourceName": "apiTest",
+    "apiName": "apiTest",
+    "functionArns": [
+        {
+            "lambdaFunction": "apiTest"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-angularapp-dev-154306-authRole",
+        "unAuthRoleName": "amplify-angularapp-dev-154306-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "apiTest",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
