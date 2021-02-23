@@ -26,7 +26,7 @@ import { NormasItemComponent } from './components/normas/item/item.component';
     IncidentesListComponent,
     IncidentesItemComponent,
     NormasListComponent,
-    IncidentesItemComponent
+    NormasItemComponent
   ],
   imports: [
     BrowserModule,

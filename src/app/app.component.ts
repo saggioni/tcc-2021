@@ -9,6 +9,7 @@ import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-ampli
 export class AppComponent implements OnInit {
   title = 'angular-app';
   authState: any;
+  showMenu: boolean = true;
   user: CognitoUserInterface | undefined;
 
   constructor(private ref: ChangeDetectorRef) { }
@@ -18,20 +19,22 @@ export class AppComponent implements OnInit {
       this.authState = authState;
       this.user = authData as CognitoUserInterface;
       this.ref.detectChanges();
-    })
-  }  
+    });
+  }
 
   ngOnDestroy() {
     return onAuthUIStateChange;
   }
-  
-  changeState(newState: string)
-  {
+
+  changeState(newState: string) {
     this.authState = newState;
   }
 
-  changeUser(newUser: CognitoUserInterface)
-  {
+  changeUser(newUser: CognitoUserInterface) {
     this.user = newUser;
+  }
+
+  toogleMenu() {
+    this.showMenu = !this.showMenu;
   }
 }

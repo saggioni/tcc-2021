@@ -1,4 +1,25 @@
-<ol class="breadcrumb border-0 m-0" *ngIf="authState === 'signedin' && user">
-    <li class="breadcrumb-item"><button style="height: 30px; font-size: 10px;" class="btn btn-block btn-dark" type="button" (click)="testApi()">TEST</button></li>
-    <li class="breadcrumb-item"><button style="height: 30px; font-size: 10px;" class="btn btn-block btn-dark" type="button" (click)="signOut()">SAIR</button></li>
-</ol>
+<ul class="c-header-nav ml-auto mr-4" data-read-aloud-multi-block="true" z-index="9000001">
+    <li class="c-header-nav-item d-md-down-none mx-2">
+        <div class="row">
+            <a class="c-header-nav-link" href="#">
+                <svg class="c-icon">
+                    <use xlink:href="/assets/icons/sprites/free.svg#cil-user"></use>
+                </svg>
+                &nbsp;
+                Gestor
+            </a>
+        </div>
+    </li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="c-header-nav-item d-md-down-none mx-2">
+        <div class="row" z-index="9000001">
+            <a class="c-header-nav-link" (click)="signOut()" href="#">
+                <svg class="c-icon">
+                    <use xlink:href="/assets/icons/sprites/free.svg#cil-power-standby"></use>
+                </svg>
+                &nbsp;
+                Sair
+            </a>            
+        </div>
+    </li>
+</ul>

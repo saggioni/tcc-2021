@@ -1,11 +1,10 @@
 <app-login *ngIf="authState !== 'signedin'" (authStateChangeEvent)="changeState($event)"
   (userChangeEvent)="changeUser($event)"></app-login>
 
-<div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar" *ngIf="authState === 'signedin'">
-  <div class="c-sidebar-brand d-lg-down-none">
-    <span class="font-weight-bold mfe-2">Sistema de Gestão da Qualidade</span>
-  </div>
+<div class="c-sidebar c-sidebar-dark c-sidebar-fixed" [class.c-sidebar-show]="showMenu" 
+  *ngIf="authState === 'signedin'">
   <ul class="c-sidebar-nav">
+    <li class="c-sidebar-nav-title">Sistema Gestão Qualidade</li>
     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/">
         Dashboard</a></li>
     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/normas">
@@ -18,12 +17,14 @@
 </div>
 
 <div class="c-wrapper c-fixed-components" *ngIf="authState === 'signedin'">
-  <header class="c-header c-header-light c-header-fixed" style="width: 100%; background-color: black;">
-    <div class="c-subheader px-3">
-      <button type="button" class="btn" style="width: 25px; height: 40px;"><span
-          class="cil-menu btn-icon mr-3"></span></button>
-      <app-logout (authStateChangeEvent)="changeState($event)" (userChangeEvent)="changeUser($event)"></app-logout>
-    </div>
+  <header class="c-header c-header-light c-header-fixed" style="z-index: 9000000">
+    <nav class="navbar navbar-light">
+      <button class="navbar-toggler" type="button" (click)="toogleMenu()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+    <app-logout (authStateChangeEvent)="changeState($event)" (userChangeEvent)="changeUser($event)"
+      class="c-header-nav ml-auto mr-6"></app-logout>
   </header>
 
   <div class=" container-fluid">
@@ -33,6 +34,5 @@
         </router-outlet>
       </main>
     </div>
-
   </div>
 </div>
