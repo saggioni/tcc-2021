@@ -19,10 +19,16 @@ export class LogoutComponent implements OnInit {
   @Output() userChangeEvent = new EventEmitter<any>();
   authState: string | undefined;
   user: CognitoUserInterface | undefined;
+  username: string | undefined;
 
   ngOnInit(): void {
+    onAuthUIStateChange((authState, authData) => {
+      this.authState = authState;
+      this.user = authData as CognitoUserInterface;
+    })
     this.authState = localStorage.authState;
-    this.user = localStorage.user;
+    this.user = localStorage.user as CognitoUserInterface;
+    this.username = localStorage.username;
   }
 
   async signOut() {
@@ -37,10 +43,5 @@ export class LogoutComponent implements OnInit {
     } catch (error) {
         console.log('error signing out: ', error);
     }
-  }
-
-  async testApi() {
-    await this.notificacoes.getNotificacoes().subscribe(notif => this.notificacoesModel = notif);
-    console.log(this.notificacoesModel)
-  }
+  }  
 }

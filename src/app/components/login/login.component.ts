@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     this.authStateChangeEvent.emit(this.authState);
     this.userChangeEvent.emit(this.user);
     this.showMessage = false;
+    console.log(Auth.currentSession());
   }
 
   hideAllert(){
@@ -33,11 +34,12 @@ export class LoginComponent implements OnInit {
   }
 
   async signIn(username: string, password: string) {
-    try {
+    try {      
       this.showMessage = false;
-      const user = await Auth.signIn(username, password);          
+      const user = await Auth.signIn(username, password);                
       this.authState = 'signedin';
-      this.user = user;
+      localStorage.setItem('username', username);
+      this.user = user as CognitoUserInterface;
       localStorage.setItem('AUTH_USER_TOKEN_KEY', user.signInUserSession.accessToken.jwtToken);
       localStorage.setItem('user', user);
       localStorage.setItem('authState', this.authState);
