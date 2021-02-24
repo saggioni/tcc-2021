@@ -11,16 +11,14 @@
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Descrição</th>
-                <th scope="col">Criado por</th>
                 <th scope="col">Ações</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>ISOXPTO</td>
-                <td>A ISOXPTO é UMA NORMA TESTE</td>
-                <td>Gestor</td>
+              <tr *ngFor="let item of normas; let i = index">
+                <th scope="row">{{item.norma_id}}</th>
+                <td>{{item.norma_nome}}</td>
+                <td>{{item.norma_descricao}}</td>
                 <td><button type="button" class="btn btn-primary btnacoes"> Editar</button>&nbsp;<button type="button"
                     class="btn btn-danger btnacoes">Excluir</button></td>
               </tr>
