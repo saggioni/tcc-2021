@@ -1,11 +1,11 @@
 export interface Incidentes {
-  incidente_id: String;
+  incidente_id: string;
   incidente_tipo: string;
   incidente_houveparada: boolean;
   incidente_titulo: string;
-  incidente_data: Date;
-  incidente_dataregistro: Date;
-  incidente_duracao: Number;
-  usuario_login_criacao: string;
+  incidente_data: string;
+  incidente_dataregistro: string;
+  incidente_duracao: string;
+  usuario_criacao: string;
   processo_nome: string;
 }

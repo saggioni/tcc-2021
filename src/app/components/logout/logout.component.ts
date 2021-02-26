@@ -3,6 +3,8 @@ import { Auth } from '@aws-amplify/auth';
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 import { NotificacoesService } from '../../services/notificacoes.service';
 import { Notificacao } from '../../model/notificacao';
+import { NormasService } from 'src/app/services/normas.service';
+import { Norma } from 'src/app/model/norma';
 
 @Component({
   selector: 'app-logout',
@@ -11,10 +13,11 @@ import { Notificacao } from '../../model/notificacao';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private notificacoes: NotificacoesService) { }
+  constructor(private normas: NormasService, private notificacoes: NotificacoesService) { }
 
 
   notificacoesModel: Notificacao[] | undefined;
+  normasModel: Norma[] | undefined;
   @Output() authStateChangeEvent = new EventEmitter<string>();
   @Output() userChangeEvent = new EventEmitter<any>();
   authState: string | undefined;

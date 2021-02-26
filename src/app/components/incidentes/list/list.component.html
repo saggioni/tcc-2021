@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row"  *ngIf="!editMode">
     <div class="col-md">
       <div class="card">
         <div class="card-header">
-          <span><button type="button" class="btn btn-block btn-primary btnsize">Adicionar Incidente</button></span>
+          <span><button type="button" class="btn btn-block btn-primary btnsize" (click)="new()">Adicionar Incidente</button></span>
         </div>
         <div class="card-body">
           <table class="table">
@@ -20,17 +20,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Manutenção de equipamento</td>
-                <td>Máquina de corte a laser</td>
-                <td>Produção peças customizadas</td>
-                <td>Sim</td>
-                <td>30/03/2021</td>
-                <td>1 hora</td>
-                <td>Gestor</td>
-                <td><button type="button" class="btn btn-primary btnacoes"> Editar</button>&nbsp;<button type="button"
-                    class="btn btn-danger btnacoes">Excluir</button></td>
+              <tr *ngFor="let item of incidentes; let i = index">
+                <th scope="row">{{item.incidente_id.slice(-12)}}</th>
+                <td>{{item.incidente_tipo}}</td>
+                <td>{{item.incidente_titulo}}</td>
+                <td>{{item.processo_nome}}</td>
+                <td>{{item.incidente_houveparada}}</td>
+                <td>{{item.incidente_data}}</td>
+                <td>{{item.incidente_duracao}}</td>
+                <td>{{item.usuario_criacao}}</td>
+                <td><button type="button" class="btn btn-primary btnacoes" (click)="view(item.incidente_id)"> Editar</button>&nbsp;<button type="button"
+                    class="btn btn-danger btnacoes" data-toggle="modal" data-target="#exampleModal" (click)="selectedToExclusionId=item.incidente_id">Excluir</button></td>
               </tr>
             </tbody>
           </table>
@@ -38,8 +38,9 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="editMode">
     <div class="col-sm-6">
-      <incidente-item></incidente-item>
+      <incidente-item [selectedItem]="selectedItem" (closeEvent)="closeView()"></incidente-item>
     </div>
   </div>
+  <app-modal (clickYesEvent)="confirmaExclusao()" message="Deseja exlcuir este item?"></app-modal>

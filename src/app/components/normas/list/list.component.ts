@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NormasItemComponent } from '../item/item.component';
 import { Norma } from '../../../model/norma';
 import { NormasService } from '../../../services/normas.service';
+
 
 @Component({
   selector: 'normas-list',
@@ -10,18 +10,32 @@ import { NormasService } from '../../../services/normas.service';
 })
 export class NormasListComponent implements OnInit {
   normas: Norma[] | undefined;
+  selectedItem: any;
+  editMode: boolean;
 
-  constructor(private normasServices: NormasService) { 
+  constructor(private normasServices: NormasService) {
     this.normas = [];
+    this.editMode = false;
   }
 
   ngOnInit(): void {
-    this.get();
+    this.load();
   }
 
-  async get()
-  {
-    await this.normasServices.get().subscribe(result => this.normas = result);
+  async load() {
+    await this.normasServices.getAll().subscribe(data => this.normas = data);
+  }
+
+  async view(norma_id: string) {
+    this.editMode = true;
+    await this.normasServices.get(norma_id).subscribe(data => { 
+      console.log(data);
+      this.selectedItem = data;      
+    })
+  }
+
+  closeView() {
+    this.editMode = false;
   }
 
 }

@@ -3,42 +3,45 @@
         <h5 class="card-title">Incidentes</h5>
         <div class="row">
             <div class="col-md">
-                <form>
-                    <div class="form-group">
-                        <label for="inputEmail4">Tipo</label>
-                        <input type="email" class="form-control" id="inputTitulo">
-                    </div>
+                <div class="form-group">
+                    <label for="inputEmail4">Tipo</label>
+                    <input type="text" ngModel class="form-control" #txtIncidenteTipo
+                        [value]="selectedItem?.incidente_titulo" minlength="5" required>
                     <div class="form-group">
                         <label for="inputPassword4">Titulo</label>
-                        <input type="text" class="form-control" id="inputTexto">
+                        <input type="text" class="form-control" #txtIncidenteTitulo
+                            [value]="selectedItem?.incidente_titulo" required aria-errormessage="Digite o Titulo">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputAddress">Nome Processo</label>
-                            <input type="text" class="form-control" id="inputAddress">
+                            <input type="text" class="form-control" #txtIncidenteProcessoNome
+                                [value]="selectedItem?.processo_nome">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputAddress">Houve Parada</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Sim</option>
-                                <option>Não</option>
+                            <select class="form-control" #cmbHouveParada>
+                                <option [selected]="selectedItem?.incidente_houveparada">Sim</option>
+                                <option [selected]="!selectedItem?.incidente_houveparada">Não</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity">Data</label>
-                            <input type="text" class="form-control" id="inputData">
+                            <input type="text" class="form-control" #txtIncidenteData
+                                [value]="selectedItem?.incidente_data">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputState">Duração</label>
-                            <input type="text" class="form-control" id="inputDuracao">
+                            <input type="text" class="form-control" #txtIncidenteDuracao
+                                [value]="selectedItem?.incidente_duracao">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button class="btn btn-primary" (click)="salvar()">Salvar</button>
                     &nbsp;
-                    <button type="submit" class="btn btn-secondary">Cancelar</button>
-                </form>
+                    <button class="btn btn-secondary" (click)="close()">Cancelar</button>
+                </div>
             </div>
         </div>
     </div>

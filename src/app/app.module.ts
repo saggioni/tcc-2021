@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { IncidentesListComponent } from './components/incidentes/list/list.compo
 import { IncidentesItemComponent } from './components/incidentes/item/item.component';
 import { NormasListComponent } from './components/normas/list/list.component';
 import { NormasItemComponent } from './components/normas/item/item.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,16 @@ import { NormasItemComponent } from './components/normas/item/item.component';
     IncidentesListComponent,
     IncidentesItemComponent,
     NormasListComponent,
-    NormasItemComponent
+    NormasItemComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AmplifyUIAngularModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

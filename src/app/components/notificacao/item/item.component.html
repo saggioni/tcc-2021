@@ -5,42 +5,42 @@
             <div class="col-md">
                 <form>
                     <div class="form-group">
-                        <label for="inputEmail4">Titulo</label>
-                        <input type="email" class="form-control" id="inputTitulo">
+                        <label for="txtNotificacaoTitulo">Titulo</label>
+                        <input type="text" id="txtNotificacaoTitulo" class="form-control" #txtNotificacaoTitulo [value]="selectedItem?.notificacao_titulo">
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword4">Texto</label>
-                        <input type="text" class="form-control" id="inputTexto">
+                        <label for="txtNotificacaoTexto">Texto</label>
+                        <input type="text" class="form-control" id="txtNotificacaoTexto" #txtNotificacaoTexto [value]="selectedItem?.notificacao_texto">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputAddress">Data Inicial</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            <label for="txtDataInicio">Data Inicial</label>
+                            <input type="text" class="form-control" id="txtDataInicio" #txtDataInicio [value]="selectedItem?.notificacao_agenda_datainicio">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputAddress">Data Final</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            <label for="txtDataFim">Data Final</label>
+                            <input type="text" class="form-control" id="txtDataFim" #txtDataFim [value]="selectedItem?.notificacao_agenda_datafim">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Sim</option>
-                                <option>Não</option>
+                            <label for="cmbHomeSistema">Exibir Home</label>
+                            <select id="cmbHomeSistema" class="form-control" #cmbHomeSistema>
+                                <option [selected]="selectedItem?.notificacao_homesistema">Sim</option>
+                                <option [selected]="!selectedItem?.notificacao_homesistema">Não</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputState">Enviar por e-mail</label>
-                            <select id="inputState" class="form-control">
-                                <option>Sim</option>
-                                <option selected>Não</option>
+                            <label for="cmbEmail">Enviar por e-mail</label>
+                            <select id="cmbEmail" class="form-control" #cmbEmail>
+                                <option [selected]="selectedItem?.notificacao_email">Sim</option>
+                                <option [selected]="!selectedItem?.notificacao_email">Não</option>
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="submit" class="btn btn-primary"  (click)="salvar()">Salvar</button>
                     &nbsp;
-                    <button type="submit" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-secondary" (click)="close()">Cancelar</button>
                 </form>
             </div>
         </div>
