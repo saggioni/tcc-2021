@@ -34,8 +34,7 @@ export class NotificacaoItemComponent implements OnInit {
     }else{
       formValues = this.getNotificacaoObject(undefined, localStorage.getItem('username'));   
     }
-    this.notificacoesServices.post(formValues).subscribe(data => console.log(data));
-    this.closeEvent.emit();
+    this.notificacoesServices.post(formValues).subscribe(data => this.closeEvent.emit());    
   }
 
   getNotificacaoObject(id: any, usuario_criacao: any): Notificacao{

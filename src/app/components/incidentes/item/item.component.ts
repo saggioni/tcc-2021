@@ -35,8 +35,7 @@ export class IncidentesItemComponent implements OnInit {
     }else{
       formValues = this.getIncidentesObject(undefined, localStorage.getItem('username'));   
     }
-    this.incidentesServices.post(formValues).subscribe(data => console.log(data));
-    this.closeEvent.emit();
+    this.incidentesServices.post(formValues).subscribe(data => this.closeEvent.emit());    
   }
 
   getIncidentesObject(id: any, usuario_criacao: any): Incidentes{
