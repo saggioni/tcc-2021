@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Notificacao } from '../../../model/notificacao';
 import { NotificacoesService } from '../../../services/notificacoes.service';
+import {Router} from "@angular/router"
 
 @Component({
   selector: 'notificacoes-list',
@@ -14,7 +15,7 @@ export class NotificacaoListComponent implements OnInit {
   editMode: boolean;
   selectedToExclusionId: string | undefined;
 
-  constructor(private notificacoesServices:NotificacoesService) {
+  constructor(private notificacoesServices:NotificacoesService, private router: Router) {
     this.notificacoes = [];
     this.editMode = false;
   }
@@ -44,13 +45,13 @@ export class NotificacaoListComponent implements OnInit {
   async closeView() {
     this.editMode = false;
     this.selectedItem = undefined;
-    this.load();
+    this.router.navigate(['/notificacoes']);
   }
 
   confirmaExclusao(){
     this.notificacoesServices.delete(this.selectedToExclusionId).subscribe(obj=>{
       this.selectedToExclusionId = undefined;
-      this.load();
+      this.router.navigate(['/notificacoes']);
     });
   }
 }

@@ -16,11 +16,6 @@ export class NormasService {
   endpoint:string = environment.apiBaseUrl + '/normas';
   normas: Norma[] | undefined;
 
-  getSimples(): Observable<Norma[]> {
-    console.log(this.endpoint);        
-    return this.http.get<Norma[]>(this.endpoint);
-  }
-
   getAll(): Observable<Norma[]> {
     return this.http.get<Norma[]>(this.endpoint);
   }

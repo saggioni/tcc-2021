@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Notificacao } from '../model/notificacao';
 import { MessageService } from './message.service';
 import { environment } from 'src/environments/environment';
 import { Incidentes } from '../model/incidentes';
@@ -20,10 +18,6 @@ export class IncidentesService {
       "X-Api-Key": environment.apiKey,
       "Access-Control-Allow-Headers": "Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token"
     });
-
-  getSimples(): Observable<Incidentes[]> {
-    return this.http.get<Incidentes[]>(this.endpoint, { headers: this.headers });
-  }
 
   getAll(): Observable<Incidentes[]> {
     return this.http.get<Incidentes[]>(this.endpoint, { headers: this.headers });
