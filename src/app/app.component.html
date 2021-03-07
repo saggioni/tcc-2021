@@ -10,8 +10,8 @@
     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/normas">
         Normas</a></li>
     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/incidentes">
-        Incidentes</a></li>
-    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/notificacoes">
+        Incidentes</a></li>        
+    <li class="c-sidebar-nav-item" *ngIf="getPerfil()"><a class="c-sidebar-nav-link" href="/notificacoes">
         Notificações</a></li>
   </ul>
 </div>
@@ -27,7 +27,7 @@
       class="c-header-nav ml-auto mr-6"></app-logout>
   </header>
 
-  <div class=" container-fluid">
+  <div class="container-fluid">
     <div class="c-body">
       <main class="c-main">
         <router-outlet>

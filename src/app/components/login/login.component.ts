@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
   async signIn(username: string, password: string) {
     try {      
       this.showMessage = false;
-      const user = await Auth.signIn(username, password);                
+      const user = await Auth.signIn(username, password); 
+      console.log(user.signInUserSession.accessToken.jwtToken)               
       this.authState = 'signedin';
       localStorage.setItem('username', username);
       this.user = user as CognitoUserInterface;

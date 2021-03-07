@@ -37,4 +37,9 @@ export class AppComponent implements OnInit {
   toogleMenu() {
     this.showMenu = !this.showMenu;
   }
+
+  getPerfil() : Boolean{
+    const userProfile = localStorage['username'].toLowerCase();
+    return userProfile === 'gestor';
+  }
 }

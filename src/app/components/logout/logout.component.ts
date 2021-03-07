@@ -36,13 +36,12 @@ export class LogoutComponent implements OnInit {
 
   async signOut() {
     try {
-        await Auth.signOut({ global: true });
-
         this.authState = 'notidentified';
         this.user = undefined;
         localStorage.clear();
         this.authStateChangeEvent.emit(this.authState);
-        this.userChangeEvent.emit(this.user);        
+        this.userChangeEvent.emit(this.user);       
+        await Auth.signOut({ global: true }); 
     } catch (error) {
         console.log('error signing out: ', error);
     }
