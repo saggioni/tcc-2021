@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,8 @@ import { IncidentesItemComponent } from './components/incidentes/item/item.compo
 import { NormasListComponent } from './components/normas/list/list.component';
 import { NormasItemComponent } from './components/normas/item/item.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { HttpRequestInterceptor } from './httpRequestInterceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,10 @@ import { ModalComponent } from './components/modal/modal.component';
     AmplifyUIAngularModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

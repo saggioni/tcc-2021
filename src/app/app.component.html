@@ -1,7 +1,11 @@
+<div *ngIf="loading" class="loading-container flex-content-center">
+  <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>
+
 <app-login *ngIf="authState !== 'signedin'" (authStateChangeEvent)="changeState($event)"
   (userChangeEvent)="changeUser($event)"></app-login>
 
-<div class="c-sidebar c-sidebar-dark c-sidebar-fixed" [class.c-sidebar-show]="showMenu" 
+<div class="c-sidebar c-sidebar-dark c-sidebar-fixed" [class.c-sidebar-show]="showMenu"
   *ngIf="authState === 'signedin'">
   <ul class="c-sidebar-nav">
     <li class="c-sidebar-nav-title">Sistema Gestão Qualidade</li>
@@ -10,7 +14,7 @@
     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/normas">
         Normas</a></li>
     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/incidentes">
-        Incidentes</a></li>        
+        Incidentes</a></li>
     <li class="c-sidebar-nav-item" *ngIf="getPerfil()"><a class="c-sidebar-nav-link" href="/notificacoes">
         Notificações</a></li>
   </ul>
