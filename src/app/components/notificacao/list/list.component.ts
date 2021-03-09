@@ -25,6 +25,7 @@ export class NotificacaoListComponent implements OnInit {
   }
 
   async load() {
+    this.notificacoes = [];
     await this.notificacoesServices.getAll().subscribe(data => { 
       this.notificacoes = data 
     });
@@ -45,13 +46,13 @@ export class NotificacaoListComponent implements OnInit {
   async closeView() {
     this.editMode = false;
     this.selectedItem = undefined;
-    this.router.navigate(['/notificacoes']);
+    this.load();
   }
 
   confirmaExclusao(){
     this.notificacoesServices.delete(this.selectedToExclusionId).subscribe(obj=>{
       this.selectedToExclusionId = undefined;
-      this.router.navigate(['/notificacoes']);
+      this.load();
     });
   }
 }

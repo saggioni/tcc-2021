@@ -26,6 +26,7 @@ export class IncidentesListComponent implements OnInit {
   }
 
   async load() {
+    this.incidentes = [];
     await this.incidentesServices.getAll().subscribe(data => {
       this.incidentes = data
     });
@@ -46,13 +47,13 @@ export class IncidentesListComponent implements OnInit {
   async closeView() {
     this.editMode = false;
     this.selectedItem = undefined;
-    this.router.navigate(['/incidentes']);
+    this.load();
   }
 
   confirmaExclusao() {
     this.incidentesServices.delete(this.selectedToExclusionId).subscribe(obj => {
       this.selectedToExclusionId = undefined;
-      this.router.navigate(['/incidentes']);
+      this.load();
     });
   }
 }
